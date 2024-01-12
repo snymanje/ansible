@@ -1,0 +1,35 @@
+- name: Install and configure Nginx
+  hosts: rhel1
+  become: true  # Run tasks with sudo privileges
+
+  tasks:
+    - name: Create nginx user and group
+      user:
+        name: nginx
+        group: nginx
+        home: /var/www/html
+        shell: /sbin/nologin
+        system: true
+
+    - name: Set ownership of Nginx directories
+      file:
+        path: "{{ item }}"
+        state: directory
+        owner: nginx
+        group: nginx
+        recurse: true
+        mode: 0755
+      with_items:
+        - /etc/nginx
+        - /var/log/nginx
+
+    - name: Install Nginx
+      yum:
+        name: nginx  # Adjust this based on your package manager (e.g., yum for CentOS)
+        state: present
+
+    - name: Start Nginx service
+      service:
+        name: nginx
+        state: restarted
+        enabled: true
