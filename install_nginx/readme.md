@@ -1,3 +1,3 @@
 ## Running this playbook
 
-ansible-playbook -i ./inventory -K install_nginx.yaml
+ansible-playbook install_nginx.yaml -K
