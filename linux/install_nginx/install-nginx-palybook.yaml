@@ -1,5 +1,5 @@
 - name: Install and configure Nginx
-  hosts: rhel1
+  hosts: rhel2
   become: true # Run tasks with sudo privileges
 
   tasks:
