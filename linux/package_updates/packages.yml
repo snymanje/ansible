@@ -1,0 +1,9 @@
+---
+- name: Install Apache
+  hosts: rhel2
+  become: true
+  gather_facts: false
+  tasks:
+    - name: Print OS info
+      ansible.builtin.package:
+        name: apache2
