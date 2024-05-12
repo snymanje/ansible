@@ -1,6 +1,6 @@
 ---
 - name: Install Apache
-  hosts: rhel2
+  hosts: rhel
   become: true
   gather_facts: false
   tasks:
