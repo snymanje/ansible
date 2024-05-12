@@ -11,24 +11,24 @@
         shell: /sbin/nologin
         system: true
 
-    - name: Set ownership of Nginx directories
-      ansible.builtin.file:
-        path: "{{ item }}"
-        state: directory
-        owner: nginx
-        group: nginx
-        recurse: true
-      with_items:
-        - /etc/nginx
-        - /var/log/nginx
+    # - name: Set ownership of Nginx directories
+    #   ansible.builtin.file:
+    #     path: "{{ item }}"
+    #     state: directory
+    #     owner: nginx
+    #     group: nginx
+    #     recurse: true
+    #   with_items:
+    #     - /etc/nginx
+    #     - /var/log/nginx
 
-    - name: Install Nginx
-      ansible.builtin.yum:
-        name: nginx # Adjust this based on your package manager (e.g., yum for CentOS)
-        state: present
+    # - name: Install Nginx
+    #   ansible.builtin.yum:
+    #     name: nginx # Adjust this based on your package manager (e.g., yum for CentOS)
+    #     state: present
 
-    - name: Start Nginx service
-      ansible.builtin.service:
-        name: nginx
-        state: started
-        enabled: true
+    # - name: Start Nginx service
+    #   ansible.builtin.service:
+    #     name: nginx
+    #     state: started
+    #     enabled: true
